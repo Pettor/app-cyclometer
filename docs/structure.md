@@ -61,6 +61,31 @@ core/
 │   ├── AppSocialLinks.ts
 │   └── UseAppSocialLinks.ts
 │
+├── audio/                # Web Audio synth (metronome clicks + drum voices)
+│   ├── AudioEngine.ts
+│   └── UseAudioEngine.ts
+│
+├── drums/                # Drum parts, groove suggestion, MIDI export
+│   ├── DrumAtoms.ts / DrumKit.ts / DrumPart.ts / DrumStyle.ts
+│   ├── DrumSuggest.ts
+│   ├── MidiExport.ts
+│   └── UseDrumLab.ts
+│
+├── files/DownloadFile.ts # Save bytes as a file
+│
+├── flow/                 # Time signature flow
+│   ├── FlowAtoms.ts           # Persisted flow, tempo, loop, mute + selection
+│   ├── FlowDefaults.ts        # Default flow and presets
+│   ├── FlowMath.ts            # Groupings, timing, step helpers
+│   ├── FlowStep.ts            # Zod schemas + domain types
+│   └── UseFlow.ts             # Hook exposing flow editing actions
+│
+├── storage/ValidatedStorage.ts # Zod-validated atomWithStorage adapter
+│
+├── transport/            # Playback
+│   ├── TransportPosition.ts   # Pure playhead advance + progress
+│   └── UseTransport.ts        # Drift-corrected scheduler hook
+│
 └── theme/                # Theme mode (light/dark/system)
     ├── ThemeAtoms.ts          # themeModeAtom + atomEffect persistence
     ├── ThemeMode.ts           # Domain type
@@ -117,16 +142,26 @@ components/
 
 ```
 views/
-├── dashboard/
-│   └── DashboardView.tsx
-├── forgot-password/
-│   └── ForgotPasswordView.tsx
-├── home/
-│   └── HomeView.tsx
-├── login/
-│   └── LoginView.tsx
-└── sign-up/
-    └── SignUpView.tsx
+├── flow/                         # Flow editor ("/")
+│   ├── FlowView.tsx              # Orchestrates panels; desktop columns, phone tabs
+│   ├── FlowViewProps.ts
+│   ├── UseFlowView.ts            # Derived playback state + phone tab state
+│   ├── FlowListPanel.tsx         # Pattern cards + add-from-preset
+│   ├── FlowStepCard.tsx
+│   ├── CycleStagePanel.tsx       # Signature, grouping and cycle ring
+│   ├── CycleTimeline.tsx
+│   ├── PatternEditorPanel.tsx    # Beats, note value, grouping, slots, replays
+│   └── FlowView.stories.tsx
+└── drum-lab/                     # Drum lab ("/drums")
+    ├── DrumLabView.tsx
+    ├── DrumLabViewProps.ts
+    ├── UseDrumLabView.ts         # Main/fill grid selection + playhead in grid
+    ├── DrumLabFlowPanel.tsx
+    ├── DrumGridPanel.tsx
+    ├── DrumArrangement.tsx
+    ├── DrumSuggestPanel.tsx      # Style, suggestions, "why it fits", MIDI export
+    ├── DrumLabUtils.ts           # Instrument colors/names, style copy
+    └── DrumLabView.stories.tsx
 ```
 
 Each view is a **pure presentational component** that receives every value it needs via props. Views never call hooks from `core/` or `@package/api` directly — that is the route hook's job.
@@ -142,30 +177,15 @@ A view folder contains:
 ```
 routes/
 ├── __root/
-│   └── route.tsx                           # Root layout (<Outlet />)
+│   └── route.tsx                 # Root route with router context
 ├── $/
-│   └── route.tsx                           # 404 catch-all
-│
-├── _public/                                # Layout: unauthenticated users only
-│   ├── route.tsx                           # Guard + shared public chrome
-│   ├── forgot-password/
-│   │   ├── route.tsx
-│   │   └── -UseForgotPasswordRoute.ts
-│   ├── login/
-│   │   ├── route.tsx
-│   │   └── -UseLoginRoute.ts
-│   └── sign-up/
-│       ├── route.tsx
-│       └── -UseSignUpRoute.ts
-│
-└── _authenticated/                         # Layout: authenticated users only
-    ├── route.tsx                           # Guard + navbar layout
-    ├── -UseAuthenticatedRoute.ts
-    ├── index/
-    │   └── route.tsx                       # "/" (home)
-    └── dashboard/
-        ├── route.tsx
-        └── -DashboardLoader.ts             # React Query prefetch loader
+│   └── route.tsx                 # 404 catch-all
+├── index/
+│   ├── route.tsx                 # "/" — flow editor
+│   └── -UseFlowRoute.ts
+└── drums/
+    ├── route.tsx                 # "/drums" — drum lab
+    └── -UseDrumsRoute.ts
 ```
 
 **Conventions for a route folder:**

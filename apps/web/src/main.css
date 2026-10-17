@@ -15,3 +15,39 @@
 @source "./**/**.{js,ts,jsx,tsx}";
 @source "../node_modules/@package/ui";
 @source "../node_modules/@package/storybook";
+
+/* Cyclometer meter colors: downbeat, beat groups and drum voices.
+   Darker variants in light mode keep them readable on white surfaces. */
+@theme inline {
+  --color-downbeat: var(--cm-downbeat);
+  --color-group-1: var(--cm-group-1);
+  --color-group-2: var(--cm-group-2);
+  --color-group-3: var(--cm-group-3);
+  --color-group-4: var(--cm-group-4);
+  --color-drum-tom-high: var(--cm-drum-tom-high);
+  --color-drum-tom-low: var(--cm-drum-tom-low);
+  --color-drum-kick: var(--cm-drum-kick);
+}
+
+:root,
+.light {
+  --cm-downbeat: #b7791f;
+  --cm-group-1: #0e7490;
+  --cm-group-2: #7c3aed;
+  --cm-group-3: #059669;
+  --cm-group-4: #db2777;
+  --cm-drum-tom-high: #ea580c;
+  --cm-drum-tom-low: #dc2626;
+  --cm-drum-kick: #2563eb;
+}
+
+.dark {
+  --cm-downbeat: #f5b94a;
+  --cm-group-1: #5ec8e5;
+  --cm-group-2: #b794f6;
+  --cm-group-3: #7ee0b0;
+  --cm-group-4: #f2a7c9;
+  --cm-drum-tom-high: #fb923c;
+  --cm-drum-tom-low: #f87171;
+  --cm-drum-kick: #66aaf9;
+}

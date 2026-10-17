@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { ComputerDesktopIcon, HomeIcon, MoonIcon, SunIcon } from "@heroicons/react/20/solid";
+import { ComputerDesktopIcon, MoonIcon, MusicalNoteIcon, QueueListIcon, SunIcon } from "@heroicons/react/20/solid";
 import { useNavigate } from "@tanstack/react-router";
 import { useSetAtom } from "jotai";
 import { useIntl } from "react-intl";
@@ -41,23 +41,43 @@ export function useCommandPaletteController(): CommandPaletteProps {
 
     return [
       {
-        id: "goto-home",
+        id: "goto-flow",
         label: intl.formatMessage({
-          description: "CommandPaletteController: label - go to home command",
-          defaultMessage: "Go to Home",
-          id: "0M2q2L",
+          description: "CommandPaletteController: label - go to flow editor command",
+          defaultMessage: "Go to Flow",
+          id: "nAh4Jk",
         }),
         description: intl.formatMessage({
-          description: "CommandPaletteController: caption - go to home command",
-          defaultMessage: "Navigate to the home view",
-          id: "rHCEXQ",
+          description: "CommandPaletteController: caption - go to flow editor command",
+          defaultMessage: "Build and practise a flow of time signatures",
+          id: "nGfH97",
         }),
         group: navigationGroup,
-        keywords: ["home", "start"],
-        icon: <HomeIcon className="h-4 w-4" />,
+        keywords: ["home", "flow", "metronome", "meter"],
+        icon: <QueueListIcon className="h-4 w-4" />,
         shortcut: { mod: true, shift: true, key: "h" },
         perform: () => {
           void navigate({ to: "/" });
+        },
+      },
+      {
+        id: "goto-drums",
+        label: intl.formatMessage({
+          description: "CommandPaletteController: label - go to drum lab command",
+          defaultMessage: "Go to Drum lab",
+          id: "lspZBE",
+        }),
+        description: intl.formatMessage({
+          description: "CommandPaletteController: caption - go to drum lab command",
+          defaultMessage: "Turn the flow into a drum part",
+          id: "uA5Rw7",
+        }),
+        group: navigationGroup,
+        keywords: ["drums", "groove", "midi"],
+        icon: <MusicalNoteIcon className="h-4 w-4" />,
+        shortcut: { mod: true, shift: true, key: "d" },
+        perform: () => {
+          void navigate({ to: "/drums" });
         },
       },
       {

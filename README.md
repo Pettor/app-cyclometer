@@ -5,180 +5,119 @@
 [![Coverage](https://img.shields.io/badge/coverage-%E2%89%A580%25-brightgreen)](../../actions/workflows/ci.yml)
 [![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://pettor.github.io/app-cyclometer/storybook/)
 
-A modern, production-ready React web application template designed to jumpstart your next enterprise project with industry best practices, comprehensive tooling, and a robust development workflow.
+**Odd meters, in a loop.** Cyclometer is a practice tool for musicians learning odd time signatures. Build a flow of time signatures (7/16, 5/8, 11/16…), choose how many times each one replays, and practise along with a metronome until the cycle feels natural. When you're ready, turn the flow into a drum part and export it as MIDI.
 
 ## 🚀 Demo
 
-Experience the template in action:
+- **[Live application](https://pettor.github.io/app-cyclometer/app/)**
+- **[Storybook component library](https://pettor.github.io/app-cyclometer/storybook/)**
 
-- **[Live Application Demo](https://pettor.github.io/app-cyclometer/app/)** - See the main application
-- **[Storybook Component Library](https://pettor.github.io/app-cyclometer/storybook/)** - Explore the component documentation
+## ✨ Features
 
-## ✨ Key Features
+### Flow editor
 
-This template provides a complete modern web development stack with everything you need to build scalable applications:
+- **Time signature flow** — stack patterns that play top to bottom and then cycle. Add from presets (5/8, 7/8, 7/16, 9/8, 11/16, 13/16, 4/4, 6/8), reorder, duplicate and delete.
+- **Groupings** — choose how each bar is felt (`4+3`, `3+4`, `2+2+3`, …). Every group gets its own color throughout the app.
+- **Slots** — tap a slot to cycle it between note, accent (`>`) and rest (`R`).
+- **Replays** — each pattern plays a set number of times before the flow moves on.
+- **Cycle ring** — the current bar drawn as a clock face: the amber downbeat sits at 12 o'clock, arcs show the groups and the playhead lights up each slot.
+- **Metronome** — deep kick on the downbeat, a ping on accents and a light click on everything else. Tempo, loop and mute controls.
+- **Cycle timeline** — see how long each pattern lasts within one full cycle, with live progress.
 
-### 🏗️ **Core Technologies**
+### Drum lab
 
-- **[React 19](https://reactjs.org/)** - Latest React with concurrent features and improved performance
-- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript for better developer experience and fewer runtime errors
-- **[Vite](https://vitejs.dev/)** - Lightning-fast development server and optimized production builds
-- **[Turborepo](https://turbo.build/repo/)** - High-performance monorepo build system for scalable development
+- **Drum grid** — eight voices (crash, ride, open hat, hi-hat, snare, two toms, kick) with hit, accent and ghost levels, plus per-instrument mute and audition.
+- **Groove suggestions** — generate a part from the grouping in six styles: Groove, Prog, Half-time, Linear, Busy and Sparse, with an explanation of why it fits.
+- **Fills** — an automatic snare-to-toms fill on the last pass of each pattern, editable separately from the main groove.
+- **MIDI export** — download a Standard MIDI File with General MIDI drums on channel 10 and a time signature change at every pattern.
 
-### 🎨 **Styling & UI**
+### Everywhere
 
-- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework for rapid UI development
-- **[HeroUI](https://www.heroui.com/)** - Beautiful, semantic component library built on Tailwind
-- **Responsive Design** - Mobile-first approach with modern CSS Grid and Flexbox layouts
+- Sounds are synthesised with the Web Audio API. No samples, no network calls, no accounts.
+- Your flow and preferences are saved in the browser's local storage.
+- Responsive: a three-panel desktop layout, and Play / Flow / Edit tabs with a bottom transport bar on phones.
+- Light and dark themes, installable as a PWA with offline support, and every string goes through `react-intl` so the app can be translated.
 
-### 🧪 **Testing & Quality Assurance**
+## 🏗️ Tech stack
 
-- **[Vitest](https://vitest.dev/)** - Fast unit and integration testing with hot reload
-- **[Storybook Component Testing](https://storybook.js.org/docs/writing-tests/component-testing)** - Visual component testing and documentation
-- **Code Coverage Reports** - Comprehensive coverage tracking with detailed reporting
+- **[React 19](https://react.dev/)** + **[TypeScript](https://www.typescriptlang.org/)** + **[Vite](https://vitejs.dev/)**
+- **[HeroUI v3](https://www.heroui.com/)** components on **[Tailwind CSS 4](https://tailwindcss.com/)**, icons from **[Heroicons](https://heroicons.com/)**
+- **[TanStack Router](https://tanstack.com/router)** (hash routing) and **[Jotai](https://jotai.org/)** for state
+- **[Zod](https://zod.dev/)** to validate persisted data
+- **[Vitest](https://vitest.dev/)** + **[Storybook](https://storybook.js.org/)** component tests running in Chromium, with accessibility checks
+- **[Turborepo](https://turbo.build/repo/)** monorepo managed with **pnpm**
 
-### 🔧 **Development Tools**
-
-- **[Storybook](https://storybook.js.org/)** - Component development environment and documentation
-- **[ESLint](https://eslint.org/)** - Advanced linting with React and TypeScript rules
-- **[Prettier](https://prettier.io/)** - Consistent code formatting across the entire codebase
-- **Hot Module Replacement** - Instant feedback during development
-
-### 🚀 **DevOps & Deployment**
-
-- **[GitHub Actions](https://docs.github.com/en/actions)** - Automated CI/CD pipeline with comprehensive testing
-- **[GitHub Pages](https://pages.github.com/)** - Seamless deployment and hosting
-- **Automated Quality Gates** - Build, lint, and test validation on every pull request
-- **Branch Protection Rules** - Enforce code quality standards before merging
-
-### 🌐 **Additional Integrations**
-
-- **Internationalization Ready** - Built-in i18n support with React Intl
-- **Environment Configuration** - Multi-environment setup with proper variable management
-- **Performance Monitoring** - Build-time performance analysis and optimization
-
-## 🏃‍♂️ Quick Start
-
-Get up and running in minutes:
+## 🏃 Quick start
 
 ### Prerequisites
 
 - Node.js 22 or higher
-- pnpm (recommended package manager)
+- pnpm (enabled through corepack)
 
 ### Installation
 
-1. **Clone the repository**
+```bash
+git clone https://github.com/Pettor/app-cyclometer.git
+cd app-cyclometer
+corepack enable
+pnpm install
+pnpm dev
+```
 
-   ```bash
-   git clone https://github.com/Pettor/app-cyclometer.git
-   cd app-cyclometer
-   ```
+The app runs at `https://localhost:5113`. The dev server uses a self-signed certificate, so your browser will show a warning on the first visit.
 
-2. **Enable corepack for package manager**
+### Scripts
 
-   ```bash
-   corepack enable
-   ```
+| Command          | What it does                                          |
+| ---------------- | ----------------------------------------------------- |
+| `pnpm dev`       | Start the development server                          |
+| `pnpm build`     | Build for production                                  |
+| `pnpm test`      | Run unit and Storybook component tests (Chromium)     |
+| `pnpm lint`      | Run ESLint                                            |
+| `pnpm format`    | Format with Prettier                                  |
+| `pnpm storybook` | Start Storybook at `localhost:9050`                   |
+| `pnpm deploy`    | Build the app and Storybook into `output/deployment/` |
 
-3. **Install dependencies**
+The first time you run tests, download the browser with `pnpm --filter @app/storybook exec playwright install chromium-headless-shell`.
 
-   ```bash
-   pnpm install
-   ```
-
-4. **Start development server**
-   ```bash
-   pnpm dev
-   ```
-
-Your application will be available at `https://localhost:5113` with hot reload enabled.
-
-### Available Scripts
-
-- `pnpm dev` - Start development server
-- `pnpm build` - Build for production
-- `pnpm test` - Run unit tests
-- `pnpm lint` - Run ESLint
-- `pnpm storybook` - Start Storybook development server
-- `pnpm deploy` - Build and prepare for deployment
-
-## ⚙️ Configuration
-
-### GitHub Actions Setup
-
-Enable continuous integration and deployment:
-
-1. Navigate to repository **Settings** → **Actions**
-2. Enable **"Allow all actions"**
-3. Go to **Settings** → **Rules** and create a branch protection rule:
-   - **Name**: Main
-   - **Target**: Include default branch
-   - **Required status checks**: `Lint`, `Build`, `Test Components`
-
-### GitHub Pages Deployment
-
-Set up automatic deployment:
-
-1. Go to **Settings** → **Pages**
-2. Select **Source**: Deploy from a branch
-3. Choose **Branch**: `deploy/main`
-4. Update README links to match your repository URL
-
-## 🏗️ Project Structure
+## 🗂️ Project structure
 
 ```
 ├── apps/
-│   ├── web/                # Main React application (React 19 + Vite 8 + HeroUI v3)
-│   └── storybook/          # Storybook configuration and stories
+│   ├── web/                # The Cyclometer app (React 19 + Vite + HeroUI v3)
+│   └── storybook/          # Storybook configuration and test runner
 ├── packages/
-│   ├── ui/                 # (@package/ui) Cross-app UI (logos, layouts, icons)
+│   ├── ui/                 # (@package/ui) Cross-app UI (logo, layouts, icons)
+│   ├── react/              # (@package/react) Reusable React hooks
 │   └── storybook/          # (@package/storybook) Storybook decorators
-├── configs/                # Shared ESLint, Tailwind, TypeScript, Vite configs
+├── configs/                # Shared ESLint, Tailwind, TypeScript and Vite configs
 ├── design/tokens/          # (@design/tokens) Style Dictionary design tokens
-├── docs/                   # Architectural reference — start here for deeper detail
-├── .github/workflows/      # CI/CD pipeline definitions
-└── output/                 # Build artifacts
+└── docs/                   # Architecture reference
 ```
 
-### Architecture
+Inside `apps/web/src`:
 
-`apps/web` uses a **four-layer architecture** — `core/` (domain + app shell), `components/` (reusable UI), `views/` (page compositions), `routes/` (TanStack file-based routes). For the full picture, see:
+| Folder                           | Contents                                                                 |
+| -------------------------------- | ------------------------------------------------------------------------ |
+| `core/flow/`                     | Flow model, meter math (groupings, timing) and persisted atoms           |
+| `core/transport/`                | Playhead logic and the drift-corrected playback scheduler                |
+| `core/audio/`                    | Web Audio synth for metronome clicks and drum voices                     |
+| `core/drums/`                    | Drum kit, groove suggestion, drum parts and MIDI export                  |
+| `components/`                    | Reusable UI: cycle ring, slot strip, transport controls, stepper, header |
+| `views/flow/`, `views/drum-lab/` | Page compositions, split into panels                                     |
+| `routes/`                        | `/` (flow editor) and `/drums` (drum lab), each with a route hook        |
 
-- [`docs/architecture.md`](./docs/architecture.md) — layers, provider hierarchy, data flow
-- [`docs/structure.md`](./docs/structure.md) — full directory tree with per-folder responsibilities
-- [`docs/patterns.md`](./docs/patterns.md) — Controller pattern, route hooks, atom co-location
-- [`docs/packages.md`](./docs/packages.md) — workspace package tour
+`apps/web` follows a four-layer architecture: `core/` → `components/` → `views/` → `routes/`. See [`docs/architecture.md`](./docs/architecture.md), [`docs/structure.md`](./docs/structure.md) and [`docs/patterns.md`](./docs/patterns.md) for details.
 
 ## 🤝 Contributing
 
-We welcome contributions! Here's how to get involved:
+1. Fork the repository and create a branch: `git checkout -b feature/my-feature`
+2. Make your changes, adding stories and tests for new components
+3. Run `pnpm lint` and `pnpm test`
+4. Open a pull request with a clear description
 
-1. **Fork the repository**
-2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
-3. **Make your changes** and add tests
-4. **Run the test suite**: `pnpm test`
-5. **Submit a pull request** with a clear description
-
-### Contribution Guidelines
-
-- Follow existing code style and conventions
-- Add tests for new features
-- Update documentation as needed
-- Ensure all CI checks pass
+Commits follow [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `docs:`, …).
 
 ## 📄 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-- **Issues**: [GitHub Issues](https://github.com/Pettor/app-cyclometer/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Pettor/app-cyclometer/discussions)
-- **Documentation**: [Storybook Documentation](https://pettor.github.io/app-cyclometer/storybook/)
-
----
-
-**Ready to build something amazing?** 🚀 Star this repository if you find it helpful and share it with your team!
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+Licensed under the **MIT License**. See [LICENSE](LICENSE).

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root/route'
 import { Route as IndexRouteRouteImport } from './routes/index/route'
 import { Route as SplatRouteRouteImport } from './routes/$/route'
+import { Route as DrumsRouteRouteImport } from './routes/drums/route'
 
 const IndexRouteRoute = IndexRouteRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const SplatRouteRoute = SplatRouteRouteImport.update({
   path: '/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DrumsRouteRoute = DrumsRouteRouteImport.update({
+  id: '/drums',
+  path: '/drums',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRouteRoute
   '/$': typeof SplatRouteRoute
+  '/drums': typeof DrumsRouteRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRouteRoute
   '/$': typeof SplatRouteRoute
+  '/drums': typeof DrumsRouteRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRouteRoute
   '/$': typeof SplatRouteRoute
+  '/drums': typeof DrumsRouteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$'
+  fullPaths: '/' | '/$' | '/drums'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$'
-  id: '__root__' | '/' | '/$'
+  to: '/' | '/$' | '/drums'
+  id: '__root__' | '/' | '/$' | '/drums'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRouteRoute: typeof IndexRouteRoute
   SplatRouteRoute: typeof SplatRouteRoute
+  DrumsRouteRoute: typeof DrumsRouteRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SplatRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/drums': {
+      id: '/drums'
+      path: '/drums'
+      fullPath: '/drums'
+      preLoaderRoute: typeof DrumsRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRouteRoute: IndexRouteRoute,
   SplatRouteRoute: SplatRouteRoute,
+  DrumsRouteRoute: DrumsRouteRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

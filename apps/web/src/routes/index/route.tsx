@@ -1,22 +1,24 @@
 import type { ReactElement } from "react";
 import { useDocumentTitle } from "@package/react";
 import { createFileRoute } from "@tanstack/react-router";
+import { useFlowRoute } from "./-UseFlowRoute";
 import { CommandPaletteController } from "~/components/actions/command-palette/CommandPaletteController";
 import { SettingsModalController } from "~/components/feedback/settings-modal/SettingsModalController";
 import { RouteError } from "~/core/routes/logic/RouteError";
-import { HomeView } from "~/views/home/HomeView";
+import { FlowView } from "~/views/flow/FlowView";
 
 export const Route = createFileRoute("/")({
-  component: HomePageRoute,
+  component: FlowPageRoute,
   errorComponent: ({ error }) => <RouteError error={error} />,
 });
 
-function HomePageRoute(): ReactElement {
-  useDocumentTitle("Home");
+function FlowPageRoute(): ReactElement {
+  useDocumentTitle("Flow");
+  const props = useFlowRoute();
 
   return (
     <>
-      <HomeView />
+      <FlowView {...props} />
       <SettingsModalController />
       <CommandPaletteController />
     </>
