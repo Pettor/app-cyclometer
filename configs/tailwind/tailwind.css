@@ -11,7 +11,7 @@
 @plugin "@tailwindcss/typography";
 
 /* HeroUI base styles */
-@import "@heroui/styles/base";
+@import "@heroui/styles/base" layer(base);
 
 /* HeroUI component styles */
 @import "@heroui/styles/components/index.css" layer(components);

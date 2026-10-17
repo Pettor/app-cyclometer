@@ -74,7 +74,7 @@ export function TransportControls({
         </Slider.Output>
       </Slider>
 
-      <Switch isSelected={loop} onChange={onLoopChange} className="bg-surface h-10 rounded-full px-4">
+      <Switch isSelected={loop} onChange={onLoopChange} className="bg-surface h-10 justify-center rounded-full px-4">
         <Switch.Content className="text-sm">
           <Switch.Control>
             <Switch.Thumb />
