@@ -1,0 +1,10 @@
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{t}from"./react-Q1GcV6wX.js";import{t as n}from"./jsx-runtime-DeHZSEgm.js";import{n as r,t as i}from"./MagnifyingGlassIcon-Bhfn9_F5.js";import{a,c as o,i as s,n as c,o as l,r as u,t as d}from"./textfield-B82Lbffd.js";import{c as f,t as p}from"./src-D6kimeDb.js";function m({value:e,onChange:t,ariaLabel:n,className:r,...o}){return(0,h.jsx)(d,{"aria-label":n,className:r,children:(0,h.jsxs)(u,{children:[(0,h.jsx)(l,{children:(0,h.jsx)(i,{className:`text-default-500 h-4 w-4`})}),(0,h.jsx)(a,{value:e,onChange:e=>t(e.target.value),...o})]})})}var h;function g(){return(g=e((()=>{r(),s(),o(),c(),h=n(),m.__docgenInfo={description:``,methods:[],displayName:`SearchField`,props:{value:{required:!0,tsType:{name:`string`},description:``},onChange:{required:!0,tsType:{name:`signature`,type:`function`,raw:`(value: string) => void`,signature:{arguments:[{type:{name:`string`},name:`value`}],return:{name:`void`}}},description:``},ariaLabel:{required:!0,tsType:{name:`string`},description:``},className:{required:!1,tsType:{name:`string`},description:``}},composes:[`Omit`]}})))()}function _({placeholder:e,initialValue:t=``}){let[n,r]=(0,v.useState)(t);return(0,y.jsx)(m,{ariaLabel:`Search`,value:n,onChange:r,placeholder:e,className:`w-64`})}var v,y,b,x,S,C;function w(){return(w=e((()=>{v=t(),p(),g(),y=n(),b={component:_,title:`Input/Search Field`,tags:[`autodocs`],decorators:[f]},x={args:{placeholder:`Search…`}},S={args:{placeholder:`Search…`,initialValue:`invoice`}},C=[`Default`,`WithValue`],x.parameters={...x.parameters,docs:{...x.parameters?.docs,source:{originalSource:`{
+  args: {
+    placeholder: "Search…"
+  }
+}`,...x.parameters?.docs?.source}}},S.parameters={...S.parameters,docs:{...S.parameters?.docs,source:{originalSource:`{
+  args: {
+    placeholder: "Search…",
+    initialValue: "invoice"
+  }
+}`,...S.parameters?.docs?.source}}}})))()}w();export{x as Default,S as WithValue,C as __namedExportsOrder,b as default};
